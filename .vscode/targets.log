@@ -6,11 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
-make: *** No rule to make target `all'.  Stop.
 
-
-# Make data base, printed on Mon Jun  6 12:25:53 2022
+# Make data base, printed on Wed Jun  8 19:37:11 2022
 
 # Variables
 
@@ -27,7 +24,7 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/timmyduong/Library/Mobile Documents/com~apple~CloudDocs/MOOC/Go/BackendMasterClass(Udemy)_Go_PostgreSQL_Kubernetes/1_workingwithdatabase/simplebank
+CURDIR := /Users/timmyduong/Library/Mobile Documents/com~apple~CloudDocs/MOOC/Go/BackendMasterClass(Udemy)_Go_PostgreSQL_Kubernetes/simplebank
 # makefile
 SHELL = /bin/sh
 # environment
@@ -37,17 +34,23 @@ _ = /usr/bin/make
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
 INFOPATH = /opt/homebrew/share/info:
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/bc/tmngzqrs5bgbmwtg9bbjdt8r0000gn/T/vscode-ipc-16b7cf97-8e35-4b6d-b3a2-acba5973ce15.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/bc/tmngzqrs5bgbmwtg9bbjdt8r0000gn/T/vscode-ipc-a9cdedad-65e0-49e4-a2a1-d559beafbd0a.sock
 # environment
 VSCODE_CWD = /
 # environment
+GOPROXY = https://proxy.golang.org,direct
+# environment
 PATH = /opt/homebrew/Caskroom/miniforge/base/bin:/opt/homebrew/Caskroom/miniforge/base/condabin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+# environment
+GOPATH = /Users/timmyduong/go
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -63,7 +66,7 @@ CONDA_EXE = /opt/homebrew/Caskroom/miniforge/base/bin/conda
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /Users/timmyduong/Library/Mobile Documents/com~apple~CloudDocs/MOOC/Go/BackendMasterClass(Udemy)_Go_PostgreSQL_Kubernetes/1_workingwithdatabase/simplebank
+PWD = /Users/timmyduong/Library/Mobile Documents/com~apple~CloudDocs/MOOC/Go/BackendMasterClass(Udemy)_Go_PostgreSQL_Kubernetes/simplebank
 # environment
 HOMEBREW_CELLAR = /opt/homebrew/Cellar
 # environment
@@ -71,7 +74,7 @@ ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
 MANPATH = /opt/homebrew/share/man::
 # environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+GOMODCACHE = /Users/timmyduong/go/pkg/mod
 # environment
 HOME = /Users/timmyduong
 # default
@@ -81,7 +84,7 @@ VSCODE_CODE_CACHE_PATH = /Users/timmyduong/Library/Application Support/Code/Cach
 # environment
 LOGNAME = timmyduong
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 CONDA_PROMPT_MODIFIER = (base) 
 # environment
@@ -163,7 +166,7 @@ _CE_CONDA =
 # environment
 LANG = C
 # variable set hash-table stats:
-# Load=74/1024=7%, Rehash=0, Collisions=2/97=2%
+# Load=77/1024=8%, Rehash=0, Collisions=3/100=3%
 
 # Pattern-specific Variable Values
 
@@ -171,9 +174,9 @@ LANG = C
 
 # Directories
 
-# . (device 16777231, inode 14670986): 5 files, no impossibilities.
+# . (device 16777231, inode 14670986): 13 files, no impossibilities.
 
-# 5 files, no impossibilities in 1 directories.
+# 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -199,10 +202,19 @@ all:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-.PHONY: postgres createdb dropdb migrateup migratedown
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc test
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+sqlc:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 17):
+	sqlc generate
+	
 
 # Not a target:
 .SUFFIXES:
@@ -213,11 +225,20 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-06 12:25:38
+#  Last modified 2022-06-07 12:55:41
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+test:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 20):
+	go test -v -cover ./...
+	
 
 createdb:
 #  Phony target (prerequisite of .PHONY).
@@ -262,7 +283,7 @@ migratedown:
 	
 
 # files hash-table stats:
-# Load=10/1024=1%, Rehash=0, Collisions=0/27=0%
+# Load=12/1024=1%, Rehash=0, Collisions=0/31=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -274,6 +295,8 @@ migratedown:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jun  6 12:25:53 2022
+# Finished Make data base on Wed Jun  8 19:37:11 2022
 
  
+make: *** No rule to make target `all'.  Stop.
+
