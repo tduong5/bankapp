@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/timmyduong/Library/Mobile Documents/com~apple~CloudDocs/MOOC/Go/BackendMasterClass(Udemy)_Go_PostgreSQL_Kubernetes/1_workingwithdatabase/simplebank'
+docker run --name postgres12 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:12-alpine
+make: Leaving directory `/Users/timmyduong/Library/Mobile Documents/com~apple~CloudDocs/MOOC/Go/BackendMasterClass(Udemy)_Go_PostgreSQL_Kubernetes/1_workingwithdatabase/simplebank'
+ 
