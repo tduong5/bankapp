@@ -6,8 +6,11 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
+make: *** No rule to make target `all'.  Stop.
 
-# Make data base, printed on Wed Jun  8 19:37:11 2022
+
+# Make data base, printed on Sat Jun 11 17:14:58 2022
 
 # Variables
 
@@ -42,13 +45,13 @@ __CFBundleIdentifier = com.microsoft.VSCode
 # environment
 INFOPATH = /opt/homebrew/share/info:
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/bc/tmngzqrs5bgbmwtg9bbjdt8r0000gn/T/vscode-ipc-a9cdedad-65e0-49e4-a2a1-d559beafbd0a.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/bc/tmngzqrs5bgbmwtg9bbjdt8r0000gn/T/vscode-ipc-d7ed8ad4-41ee-471a-8471-f0820a841700.sock
 # environment
 VSCODE_CWD = /
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # environment
-PATH = /opt/homebrew/Caskroom/miniforge/base/bin:/opt/homebrew/Caskroom/miniforge/base/condabin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+PATH = /opt/homebrew/Caskroom/miniforge/base/bin:/opt/homebrew/Caskroom/miniforge/base/condabin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/timmyduong/go/bin
 # environment
 GOPATH = /Users/timmyduong/go
 # environment
@@ -80,11 +83,11 @@ HOME = /Users/timmyduong
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/timmyduong/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+VSCODE_CODE_CACHE_PATH = /Users/timmyduong/Library/Application Support/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
 # environment
 LOGNAME = timmyduong
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 CONDA_PROMPT_MODIFIER = (base) 
 # environment
@@ -120,7 +123,7 @@ TMPDIR = /var/folders/bc/tmngzqrs5bgbmwtg9bbjdt8r0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/timmyduong/Library/Application Support/Code/1.67.2-main.sock
+VSCODE_IPC_HOOK = /Users/timmyduong/Library/Application Support/Code/1.68.0-main.sock
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -128,7 +131,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.14677232.14677238
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.15154571.15154578
 # environment
 HOMEBREW_PREFIX = /opt/homebrew
 # automatic
@@ -160,7 +163,7 @@ MAKELEVEL := 0
 # environment
 CONDA_PREFIX = /opt/homebrew/Caskroom/miniforge/base
 # environment
-VSCODE_PID = 12363
+VSCODE_PID = 50361
 # environment
 _CE_CONDA = 
 # environment
@@ -174,9 +177,9 @@ LANG = C
 
 # Directories
 
-# . (device 16777231, inode 14670986): 13 files, no impossibilities.
+# . (device 16777231, inode 14670986): 17 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 17 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -202,7 +205,7 @@ all:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc test
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc test server mock
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -225,11 +228,20 @@ sqlc:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-07 12:55:41
+#  Last modified 2022-06-11 16:33:01
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+server:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 23):
+	go run main.go
+	
 
 test:
 #  Phony target (prerequisite of .PHONY).
@@ -282,21 +294,29 @@ migratedown:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down
 	
 
+mock:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 26):
+	mockgen -package mockdb -destination db/mock/store.go github.com/techschool/simplebank/db/sqlc Store
+	
+
 # files hash-table stats:
-# Load=12/1024=1%, Rehash=0, Collisions=0/31=0%
+# Load=14/1024=1%, Rehash=0, Collisions=0/35=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
 
 # No general (`VPATH' variable) search path.
 
+ 
 # # of strings in strcache: 1
 # # of strcache buffers: 1
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Jun  8 19:37:11 2022
+# Finished Make data base on Sat Jun 11 17:14:58 2022
 
  
-make: *** No rule to make target `all'.  Stop.
-

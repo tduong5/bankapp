@@ -1,0 +1,7 @@
+TODO:   
+    - Write unit tests: 
+        - transfer.go in api folder
+        - paseto_maker_test.go invalidtokencase 
+    - implements routes to update or delete accounts in api folder
+        - server.go
+        - account.go
