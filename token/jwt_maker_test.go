@@ -6,7 +6,7 @@ import (
 
 	"github.com/golang-jwt/jwt"
 	"github.com/stretchr/testify/require"
-	"github.com/techschool/simplebank/util"
+	"github.com/tduong5/simplebank/util"
 )
 
 func TestJWTMaker(t *testing.T) {

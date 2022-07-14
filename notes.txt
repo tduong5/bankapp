@@ -5,3 +5,8 @@ TODO:
     - implements routes to update or delete accounts in api folder
         - server.go
         - account.go
+
+
+protoc-gen-go: program not found or is not executable:
+https://github.com/golang/protobuf/issues/795#issuecomment-571264398
+    export PATH=$PATH:~/go/bin

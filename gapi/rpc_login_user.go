@@ -4,9 +4,9 @@ import (
 	"context"
 	"database/sql"
 
-	db "github.com/techschool/simplebank/db/sqlc"
-	"github.com/techschool/simplebank/pb"
-	"github.com/techschool/simplebank/util"
+	db "github.com/tduong5/simplebank/db/sqlc"
+	"github.com/tduong5/simplebank/pb"
+	"github.com/tduong5/simplebank/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/timestamppb"

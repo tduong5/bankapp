@@ -1,4 +1,4 @@
-module github.com/techschool/simplebank
+module github.com/tduong5/simplebank
 
 go 1.18
 
